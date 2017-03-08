@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -17,49 +15,49 @@ public class AutoClaim implements Serializable{
 
 	@Id
 	private long id;
-	
+
 	@Column(name = "claimstatus")
 	private String claimstatus;
-	
+
 	@Column(name = "payments")
 	private String payments;
-	
+
 	@Column(name = "incidentdate")
 	private String incidentdate;
-	
+
 	@Column(name = "reporteddate")
 	private String reporteddate;
-	
+
 	@Column(name = "incidenttype")
 	private String incidenttype;
-		
+
 	@Column(name = "year")
 	private String year;
-	
+
 	@Column(name = "make")
 	private String make;
-	
+
 	@Column(name = "model")
 	private String model;
-	
+
 	@Column(name = "vin")
 	private String vin;
-	
+
 	@Column(name = "driver")
 	private String driver;
-	
+
 	@Column(name = "contactnumber")
 	private String contactnumber;
-		
+
 	@Column(name = "email")
 	private String email;
-	
+
 	@Column(name = "policynumber")
 	private String policynumber;
-		
+
 	@Column(name = "policytype")
 	private String policytype;
-		
+
 	public long getId() {
 		return id;
 	}
@@ -193,7 +191,7 @@ public class AutoClaim implements Serializable{
 	}
 
 	public AutoClaim() {}
-	
+
 	public AutoClaim(long id, String claimstatus, String payments,
 			String incidentdate, String reporteddate, String incidenttype,
 			String year, String make, String model, String vin, String driver,
@@ -216,6 +214,6 @@ public class AutoClaim implements Serializable{
 		this.policynumber = policynumber;
 		this.policytype = policytype;
 	}
-		
-	
+
+
 }

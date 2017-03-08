@@ -15,22 +15,22 @@ import com.example.service.DemoService;
 @RestController
 public class DemoController {
 
-	
+
 	@Autowired
 	DemoService demoService;
-	
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ResponseEntity<AutoClaim> getdetails(){
 		AutoClaim claim = demoService.getlist();
 		return new ResponseEntity<AutoClaim>(claim, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ResponseEntity<Void> add(@RequestBody AutoClaim claim) {
 		demoService.save(claim);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
 	public boolean modify(@PathVariable("id") Long id) {
 		return demoService.delete(id);
