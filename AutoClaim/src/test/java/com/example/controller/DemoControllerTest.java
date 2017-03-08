@@ -1,10 +1,3 @@
-/**
- *
- * © Copyright 2012, Cognizant 
- *
- * @author        : 537775
- * @version       : 0.1, Mar 8, 2017
- */
 package com.example.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,7 +22,6 @@ import com.example.service.DemoService;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({DemoService.class})
-@PowerMockIgnore({ "javax.management.*", "javax.net.ssl.*" })
 @SpringBootTest(classes = Application.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 public class DemoControllerTest {
 

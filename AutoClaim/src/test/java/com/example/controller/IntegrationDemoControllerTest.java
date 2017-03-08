@@ -34,7 +34,7 @@ public class IntegrationDemoControllerTest {
 	private WebApplicationContext context;
 
 	private MockMvc mvc;
-	
+
 	public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
 
 	@Before
@@ -46,36 +46,36 @@ public class IntegrationDemoControllerTest {
 	public void testLogin() throws Exception {
 
 		this.mvc.perform(get("/index")).andExpect(status().isOk())
-				.andExpect(view().name("login"));
+		.andExpect(view().name("login"));
 	}
 
 	@Test
 	public void testListDetails() throws Exception {	
-        
+
 		this.mvc.perform(get("/list")).andExpect(status().isOk())
-				.andExpect(jsonPath("$.id").value(20174561L));
+		.andExpect(jsonPath("$.id").value(20174561L));
 	}
-	
+
 	@Test
 	public void testAddDetails() throws Exception {	
 		AutoClaim mockedItem= new AutoClaim();
 		mockedItem.setId(12345L);
-        mockedItem.setClaimstatus("success");
-        mockedItem.setContactnumber("123456");
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
-        ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
-        String requestJson=ow.writeValueAsString(mockedItem );
-        
+		mockedItem.setClaimstatus("success");
+		mockedItem.setContactnumber("123456");
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
+		ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
+		String requestJson=ow.writeValueAsString(mockedItem );
+
 		this.mvc.perform(post("/add").contentType(APPLICATION_JSON_UTF8).content(requestJson)).andExpect(status().isOk());
-		
-		
+
+
 	}
-	
+
 	@Test
 	public void testDeleteDetails() throws Exception {			        
 		this.mvc.perform(delete("/delete/12345L").accept(MediaType.APPLICATION_JSON)).andReturn().equals(true);
-						
+
 	}
-	
+
 }
